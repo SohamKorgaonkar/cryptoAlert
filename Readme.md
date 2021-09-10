@@ -16,14 +16,19 @@ Use Post Request
 "alert": price alert
 }
 
+
 /alerts/delete #Deletes the user
 {
 "user":username
 }
+
+
 /alerts/fetch
 Send get request to show users and their alerts
 
 Database used: Google Firebase
+
 Email not working yet but event is triggered
+
 Used threading instead of salery due to time constrains
  
