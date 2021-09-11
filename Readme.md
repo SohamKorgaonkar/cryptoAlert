@@ -1,6 +1,6 @@
 ﻿## Krypto Task Submission File
 
-Deployed on: https://kryptodep.eu-gb.mybluemix.net    #Not working properly but deploys on localhost
+Deployed on: https://kryptodep.eu-gb.mybluemix.net
 
 # Approach
 Used flask to setup the endpoints. Couldnt setup celery due to time constrains but used threading instead to poll for values. Email service not working hence code is commented, tried using gmail api.
