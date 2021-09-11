@@ -30,6 +30,7 @@ To add an alert
 # API format
 Use Post Request
 
+1. To Create User and Alert
 /alerts/create
 
 {
@@ -38,18 +39,19 @@ Use Post Request
 "alert": price alert
 }
 
-
+2. To Delete the alert (with user)
 /alerts/delete #Deletes the user
 
 {
 "user":username
 }
 
-
+3. To fetch all alerts and their status
 /alerts/fetch
 
 Send get request to show users and their alerts
 
+4. To reset alerts
 /alerts/reset
 
 {
