@@ -24,8 +24,8 @@ To add an alert
 
 
 # Steps to run
-1. Install files from requirements.txt
-2. Execute run.py
+1. Install files from requirements.txt (pip install -r requirements.txt)
+2. Execute run.py (python run.py)
 
 # API format
 Use Post Request
