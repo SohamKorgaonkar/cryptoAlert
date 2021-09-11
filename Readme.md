@@ -32,35 +32,35 @@ Use Post Request
 
 1. To Create User and Alert
 
- /alerts/create
+    Endpoint: /alerts/create
 
- {
- "user": username
- "email"emailid
- "alert": price alert
- }
+    {
+    "user": username
+    "email"emailid
+    "alert": price alert
+    }
 
 2. To Delete the alert (with user)
 
- /alerts/delete #Deletes the user
+    Endpoint: /alerts/delete #Deletes the user
 
- {
- "user":username
- }
+    {
+    "user":username
+    }
 
 3. To fetch all alerts and their status
 
- /alerts/fetch
+    Endpoint: /alerts/fetch
 
- Send get request to show users and their alerts
+    Send get request to show users and their alerts
 
 4. To reset alerts
 
- /alerts/reset
+    Endpoint: /alerts/reset
 
- {
- "user": username
- }
+    {
+    "user": username
+    }
 
- Resets the status of alerts
+    Resets the status of alerts
  
