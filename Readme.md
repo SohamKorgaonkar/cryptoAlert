@@ -21,6 +21,7 @@ To add an alert
 3. When there is a match, the sendemail() function is triggered (Does nothing for now) and the status is set to triggered
 4. To check all alerts, send a get reqest on /alerts/fetch. It returns the user, alerts and their status
 5. Making a POST request at /alerts/reset resets the status back to NotTriggered
+6. Multiple requests can be made with same email id and diffierent alerts, but username must be unique.
 
 
 # Steps to run
