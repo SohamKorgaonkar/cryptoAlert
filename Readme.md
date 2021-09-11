@@ -31,32 +31,36 @@ To add an alert
 Use Post Request
 
 1. To Create User and Alert
-/alerts/create
 
-{
-"user": username
-"email"emailid
-"alert": price alert
-}
+ /alerts/create
+
+ {
+ "user": username
+ "email"emailid
+ "alert": price alert
+ }
 
 2. To Delete the alert (with user)
-/alerts/delete #Deletes the user
 
-{
-"user":username
-}
+ /alerts/delete #Deletes the user
+
+ {
+ "user":username
+ }
 
 3. To fetch all alerts and their status
-/alerts/fetch
 
-Send get request to show users and their alerts
+ /alerts/fetch
+
+ Send get request to show users and their alerts
 
 4. To reset alerts
-/alerts/reset
 
-{
-"user": username
-}
+ /alerts/reset
 
-Resets the status of alerts
+ {
+ "user": username
+ }
+
+ Resets the status of alerts
  
