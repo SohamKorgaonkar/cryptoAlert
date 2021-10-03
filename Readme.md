@@ -3,15 +3,15 @@
 Deployed on: https://kryptodep.eu-gb.mybluemix.net
 
 # Approach
-Used flask to setup the endpoints. Couldnt setup celery due to time constrains but used threading instead to poll for values. Email service not working hence code is commented, tried using gmail api.
-
-Firebase was used as the database to store user credentials and other info.
-
-The venv folder contains the working environment for python.
 
 run.py contains the initialization and threading code for polling values and setting triggers
 
 app/main.py contains the endpoints and their functions
+
+All credentials are to be stored as environment variables (eg. FIREBASE_URL, EMAIL_ID, EMAIL_PASSWORD)
+
+The run.py file runs 2 threads in total, one runs the server and other polls for values and checks for changes in the database. If the value of Bitcoin comes within 50USD of the given value, and email is sent to the user alerting him about the same.
+
 
 # How to use
 The app currently supports only 1  alert per user, adding more than one alert will overwrite the previous one
