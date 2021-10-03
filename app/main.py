@@ -8,6 +8,11 @@ Firebase=firebase.FirebaseApplication("https://kryptotest-ce994-default-rtdb.fir
 
 app = Flask(__name__)
  
+@app.route('/')
+def landing_page():
+    return """<h1>Welcome to my crypto Alert API</h1>
+    <p>For more info go to <a href="https://github.com/SohamKorgaonkar/cryptoAlert">https://github.com/SohamKorgaonkar/cryptoAlert</a></p>"""
+
 @app.route('/alerts/create',methods=["POST"])
 def create_alert():
     create_new=request.get_json()

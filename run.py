@@ -3,28 +3,31 @@ import threading
 from time import sleep
 from firebase import firebase
 from pycoingecko import CoinGeckoAPI
+import os
+import smtplib
 
-"""from Google import Create_Service
-import base64
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-
-CLIENT_SECRET_FILE = 'client_secret.json'
-API_NAME = 'gmail'
-API_VERSION = 'v1'
-SCOPES = ['https://mail.google.com/']
-
-service = Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)"""
-
+email_id=str(os.getenv("EMAIL_ID"))
+password=str(os.getenv("EMAIL_PASSWORD"))
+print(email_id)
+print(password)
 cg=CoinGeckoAPI()
-Firebase=firebase.FirebaseApplication("https://kryptotest-ce994-default-rtdb.firebaseio.com/",None)
+Firebase=firebase.FirebaseApplication(str(os.getenv('FIREBASE_URL')),None)
+port = int( os.getenv( 'PORT', 8000 ) )
 
 def get_limit():
     k=cg.get_price(ids='bitcoin',vs_currencies='usd')
     return k['bitcoin']['usd']
 
-def send_email(email_id):
-    print("Email Sent")
+def send_email(email_id1,limit):
+    with smtplib.SMTP('smtp.gmail.com',587) as smtp:
+        smtp.ehlo()
+        smtp.starttls()
+        smtp.ehlo()
+        smtp.login(email_id,password)
+        subject="Crypto API Alert Triggered"
+        body="The value of bitcoin has reached near the specified value of "+str(limit)+" USD"
+        msg=f'Subject: {subject}\n\n{body}'
+        smtp.sendmail(email_id,email_id1,msg)
     pass
 
 
@@ -37,13 +40,14 @@ def test():
             usr_det=dict(usr_det)
             usr_list=list(usr_det.keys())
             limit=get_limit()
+            print(limit)
             for i in usr_list:
                 t_alert=usr_det[i]['alert']
                 check_t=usr_det[i]['status']
                 emailid=usr_det[i]['email']
-                if(check_t=='Not Triggered' and t_alert==limit):
+                if(check_t=='Not Triggered' and (int(t_alert)<=limit+50 and int(t_alert)>=limit-50)):
                     Firebase.put(i,'status',"Triggered")
-                    send_email(emailid)
+                    send_email(emailid,limit)
         sleep(10)
 
                 
@@ -52,4 +56,4 @@ t1=threading.Thread(target=test)
 t1.start()
 
 if __name__ == "__main__":
-    app.run(port=8080)
+    app.run(host='0.0.0.0',port=port)
