@@ -1,4 +1,4 @@
-﻿## Krypto Task Submission File
+﻿## CryptoAlert API Readme
 
 Deployed on: https://kryptodep.eu-gb.mybluemix.net
 
